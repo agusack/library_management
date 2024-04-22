@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+    <!-- FORM -->
+        <record id="book_category_form" model="ir.ui.view">
+            <field name="name">Book Category</field>
+            <field name="model">book.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" string="Category"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- TREE -->
+        <record id="book_category_tree" model="ir.ui.view">
+            <field name="name">Book Category</field>
+            <field name="model">book.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Category"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="book_category_action" model="ir.actions.act_window">
+            <field name="name">Books Category</field>
+            <field name="res_model">book.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="book_category_tree"/>
+        </record>
+    
+        <!-- MENU -->
+        <record id="menu_book_category" model="ir.ui.menu">
+            <field name="name">Category</field>
+            <field name="parent_id" ref="menu_library_book"/>
+            <field name="action" ref="book_category_action"/>
+            <field name="groups_id" eval="[(4, ref('group_library_manager')), (4, ref('group_library_assistant'))]"/>
+        </record>
+    </data>
+</odoo>

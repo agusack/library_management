@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+      <!-- FORM -->
+        <record id="author_management_view_form" model="ir.ui.view">
+            <field name="name">Author Management</field>
+            <field name="model">author.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Author Information">
+                            <field name="res_partner_id" string="Name"/>
+                            <field name="age" string="Age"/>
+                            <field name="book_id" string="Books"/>
+                            <field name="author_continues_writing_books" string="Still writing?"/>
+                        </group> 
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- TREE -->
+        <record id="author_management_view_tree" model="ir.ui.view">
+            <field name="name">Author Management</field>
+            <field name="model">author.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="res_partner_id" string="Name"/>
+                    <field name="age" string="Age"/>
+                    <field name="book_id" string="Books" widget="many2many_tags"/>
+                    <field name="author_continues_writing_books" string="Still writing?"/>
+                </tree>
+            </field>
+        </record>
+
+          <!-- SEARCH -->
+        <record id="author_management_view_search" model="ir.ui.view">
+            <field name="name">Author Management Filters</field>
+            <field name="model">author.management</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <filter string="Still writing?" name="author_continues_writing_books" domain="[('author_continues_writing_books', '=', True)]"/>
+                    <field string="Author" name="res_partner_id"/>
+                    <field string="Age" name="age"/>
+                    <field string="Book" name="book_id"/>
+                    <!-- Group by -->
+                    <group expand="1" string="Group by Age">
+                        <filter string="Age" name="age" context="{'group_by': 'age'}"/>
+                    </group>
+                     <group expand="2" string="Group by Books">
+                        <filter string="Books grouped" name="book_id" context="{'group_by': 'book_id'}"/>
+                    </group>
+                     <group expand="3" string="Group by Author">
+                        <filter string="Author grouped" name="author" context="{'group_by': 'res_partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+
+        </record>
+         <!-- ACTION -->
+        <record id="action_library_author" model="ir.actions.act_window">
+            <field name="name">Author</field>
+            <field name="res_model">author.management</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="author_management_view_tree"/>
+        </record> 
+
+        <!-- MENU -->
+        <record id="menu_author" model="ir.ui.menu">
+            <field name="name">Author</field>
+            <field name="parent_id" ref="menu_library"/>
+            <field name="action" ref="action_library_author"/>
+        </record>
+    </data>
+</odoo>

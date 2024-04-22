@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="copy_mail_template" model="mail.template">
+            <field name="name">Confirmación de Pedido</field>
+            <field name="model_id" ref="model_book_copy"/>
+            <field name="email_from">noreply@example.com</field>
+            <field name="email_to">noreply@example.com</field>
+            <field name="subject">Confirmación de Pedido</field>
+            <field name="body_html" type="html">
+
+                <div>
+                    <p>Muchas gracias <t t-out="object.customer_id.name"></t></p>
+                    <p>Su 
+                        <t t-if="object.status == 'rental'">renta del libro <t t-out="object.book_title"></t> se completó correctamente.
+                            
+                            
+                            Por favor devuelvalo antes del: <t t-out="object.return_date"/>
+                        </t>
+                        
+                        <t t-elif="object.status != 'rental'">compra del libro <t t-out="object.book_title"></t> se completó correctamente.</t>
+                        </p>
+                    <p>Detalles de su Pedido:</p>
+                    <ul>
+                        <li>Código del ejemplar: <t t-out="object.copy_code"></t></li>
+                        <li>Fecha del Pedido: <t t-out="object.acquisition_date"></t></li>
+                        <li>Total del Pedido: <t t-out="object.book_price"></t></li>
+                    </ul>
+                    <p>¡Gracias por su 
+                        <t t-if="object.status == 'rental'">renta</t>
+                        <t t-elif="object.status != 'rental'">compra</t>
+                    !</p>
+                </div>
+
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- FORM -->
+    <record id="book_copy_wizard_form" model="ir.ui.view">
+        <field name="name">book.copy.wizard.form</field>
+        <field name="model">book.copy.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Copy">
+                        <field name="book_title" string="Book Title"/>
+                        <field name="customer_id" string="Customer"/>
+                        <field name="status" string="Status"/>
+                        <field name="acquisition_date" string="Acquisition date"/>
+                        <field name="days_of_rent" string="Days of rent" attrs="{'readonly': [('status', '!=', 'rented')]}"/>
+                        <field name="return_date" string="Return date" />
+
+                    </group>
+                    <footer>
+                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" class="btn-secundary"/>
+                    </footer>
+                </sheet>
+            </form>
+        
+        </field>
+    </record>
+</data>
+</odoo>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- FORM -->
+        <record id="book_management_view_form" model="ir.ui.view">
+            <field name="name">Book Management</field>
+            <field name="model">book.management</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group string="Book Information">
+                            <field name="title" string="Title"/>
+                            <field name="price" string="Price"/>
+                            <field name="author_ids" string="Author" />
+                            <field name="summary"/>
+                            <field name="category_ids" widget="many2many_tags"/>
+                            <field name="release_date"/>
+                            <field name="total_pages"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- TREE -->
+        <record id="book_management_view_tree" model="ir.ui.view">
+            <field name="name">Book Management</field>
+            <field name="model">book.management</field>
+            <field name="arch" type="xml">
+
+                <tree string="Books">
+                    <field name="title" string="Title"/>
+                    <field name="price" string="Price"/>
+                    <field name="author_ids" string="Author" />
+                    <field name="summary"/>
+                    <field name="category_ids" widget="many2many_tags"/>
+                    <field name="release_date"/>
+                    <field name="total_pages"/>
+                </tree>
+            </field>
+
+        </record>
+
+        
+        <!-- SEARCH -->
+        <record id="book_management_view_search" model="ir.ui.view">
+            <field name="name">Book Management Filters</field>
+            <field name="model">book.management</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field string="Author" name="author_ids"/>
+                    <field string="Price" name="price"/>
+                    <field string="Total Pages" name="total_pages"/>
+                    <!-- Group by -->
+                    <group expand="1" string="Group by Release date">
+                        <filter string="Release date" name="release_date" context="{'group_by': 'release_date'}"/>
+                    </group>
+                     <group expand="2" string="Group by Total pages">
+                        <filter string="Total pages grouped" name="total_pages" context="{'group_by': 'total_pages'}"/>
+                    </group>
+                     <group expand="3" string="Group by Author">
+                        <filter string="Author grouped" name="author" context="{'group_by': 'author_ids'}"/>
+                    </group>
+                </search>
+            </field>
+
+        </record>
+
+
+        <!-- ACTION -->
+        <record id="action_library_book" model="ir.actions.act_window">
+            <field name="name">Library Books</field>
+            <field name="res_model">book.management</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="view_id" ref="book_management_view_tree"/>
+        </record> 
+        <!-- MENÚ -->
+        <record id="menu_library" model="ir.ui.menu">
+            <field name="name">Library</field>
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <record id="menu_library_book" model="ir.ui.menu">
+            <field name="name">Books</field>
+            <field name="parent_id" ref="menu_library"/>
+            <field name="action" ref="action_library_book"/>
+        </record>
+        <record id="menu_library_book_admin" model="ir.ui.menu">
+            <field name="name">Book list</field>
+            <field name="parent_id" ref="menu_library_book"/>
+            <field name="action" ref="action_library_book"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_library_book_management_asssistant","library.book.management.assistant","model_book_management","group_library_assistant",1,1,1,0
+"access_library_book_management_manager","library.book.management.manager","model_book_management","group_library_manager",1,1,1,1
+"access_library_book_management_users","library.book.management.users","model_book_management","group_library_users",1,0,0,0
+"access_library_book_category_asssistant","library.book.categor.assistant","model_book_category","group_library_assistant",1,1,1,0
+"access_library_book_category_manager","library.book.categor.manager","model_book_category","group_library_manager",1,1,1,1
+"access_library_book_category_users","library.book.categor.users","model_book_category","group_library_users",1,0,0,0
+"access_library_author_management_asssistant","library.author.management.assistant","model_author_management","group_library_assistant",1,1,1,0
+"access_library_author_management_manager","library.author.management.manager","model_author_management","group_library_manager",1,1,1,1
+"access_library_author_management_users","library.author.management.users","model_author_management","group_library_users",1,0,0,0
+"access_library_book_copy_wizard_asssistant","library.book.copy.wizard.assistant","model_book_copy_wizard","group_library_assistant",1,1,1,0
+"access_library_book_copy_wizard_manager","library.book.copy.wizard.manager","model_book_copy_wizard","group_library_manager",1,1,1,1
+"access_library_book_copy_wizard_users","library.book.copy.wizard.users","model_book_copy_wizard","group_library_users",1,0,1,0
+"access_library_book_copy_asssistant","library.book.copy.assistant","model_book_copy","group_library_assistant",1,1,1,0
+"access_library_book_copy_manager","library.book.copy.manager","model_book_copy","group_library_manager",1,1,1,1
+"access_library_book_copy_users","library.book.copy.users","model_book_copy","group_library_users",1,0,0,0
+
