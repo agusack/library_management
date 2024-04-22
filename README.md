@@ -37,4 +37,4 @@ Una vez instalado, puedes usar el módulo para:
 
 ## Contacto
 
-Si tienes preguntas o necesitas más información, puedes ponerte en contacto conmigo a través de [LinkedIn](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+Si tienes preguntas o necesitas más información, puedes ponerte en contacto conmigo a través de [LinkedIn](https://www.linkedin.com/in/ackagus/).
